@@ -1,0 +1,20 @@
+
+  .wrapper{
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .file-wrapper{
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.txt-grey{
+  color: #9e9e9e !important;
+}

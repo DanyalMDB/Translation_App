@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div style="display: flex;justify-content: center; align-self: center;">
+<div class="center" style="min-width: 48%;display: block;">
+  <div class="wrapper z-depth-3">
+    <div class="center" *ngIf="isFetching">
+      <div class="spinner-grow text-primary center" role="status">
+        <span class="sr-only">Translating...</span>
+      </div>
+    </div>
+    <div *ngIf="!isFetching && !isError && fileUrl.length>0">
+      <a [href]="transformFileUrl(fileUrl)" target="_blank" type="button" mdbBtn color="primary" class="center"
+        mdbWavesEffect>Download
+        translated file</a>
+      <p class="center txt-grey">Or</p>
+      <p class="center txt-grey">Copy following URL to new tab in browser</p>
+      <p class="center txt-grey">{{fileUrl}}</p>
+    </div>
+    <div *ngIf="isError">
+      <div class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
+    </div>
+    <div>
+      <label>Please insert onedrive embed link</label>
+      <input type="text" (keyup)="outsideFileLinkChange($event)" placeholder="One Drive file embed link"
+        style="width: 100%; padding: 5px;" />
+    </div>
+<hr/>
+<h2>Voice Recognition</h2>
+    <div class="md-form mb-0">
+      <textarea *ngIf="false" cols="30" type="text" class="md-textarea form-control z-depth-1" mdbInput
+        rows="4">{{translateOutputModel?.translatedText}}</textarea>
+      <div><textarea type="text" class="md-textarea form-control z-depth-1 p-2 rounded"
+          style="width: -webkit-fill-available;" mdbInput cols="30" rows="26" placeholder="Recognized voice statements"
+          disabled>{{service.text}}</textarea>
+        <div class="block-center">
+          <button id=start_btn (click)="startService()" type="button" mdbBtn color="primary" mdbWavesEffect
+            *ngIf="recording==(1)">Start Voice Recording</button>
+          <button id=stop_btn (click)="stopService()" type="button" mdbBtn color="primary" mdbWavesEffect
+            *ngIf="recording==2">Stop Voice Recording</button>
+          <button id=start_btn (click)="startService()" type="button" mdbBtn color="primary" mdbWavesEffect
+            *ngIf="recording==(3)">Start Voice Recording Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="" style="min-width: 50%;margin-left: 20px;;" *ngIf="outsideFileLink">
+  <div class="file-wrapper z-depth-3">
+    <h4>OneDrive file</h4>
+    <hr />
+    <div>
+      <iframe [src]="tranform(outsideFileLink)" onerror="console.log('error while loading remote file')"
+        style="height: 80vh;width: 90%;display: block;margin: auto;"></iframe>
+    </div>
+  </div>
+</div>
+</div>

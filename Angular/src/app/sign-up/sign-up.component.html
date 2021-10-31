@@ -1,0 +1,62 @@
+<div class="center">
+  <div class="cont block-center z-depth-3 mt-5">
+    <div class="form sign-in">
+      <form [formGroup]="loginForm" (submit)="onLoginSubmit()">
+        <label>
+          <span>Email</span>
+          <input type="email" formControlName="email" />
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" formControlName="password" />
+        </label>
+        
+        <button type="submit" class="submit">Sign In</button>
+        <div *ngIf="isError" class="alert alert-danger" role="alert">
+          {{errorMessage}}
+        </div>
+      </form>
+    </div>
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img__text m--up">
+          <h2>New here?</h2>
+          <p></p>
+        </div>
+        <div class="img__text m--in">
+          
+          <h2>If you already has an account, just sign in.</h2>
+        </div>
+        <div class="img__btn">
+          <span class="m--up">Sign Up</span>
+          <span class="m--in">Sign In</span>
+        </div>
+      </div>
+      <div class="form sign-up">
+        <form [formGroup]="signUpForm" (submit)="onSignupSubmit()">
+          <h2></h2>
+          <label>
+            <span>Name</span>
+            <input type="text" formControlName="name" />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" formControlName="email" />
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" formControlName="password" />
+          </label>
+          <button type="submit" class="submit">Sign Up</button>
+          <div *ngIf="isError" class="alert alert-danger" role="alert">
+            {{errorMessage}}
+          </div>
+          <div *ngIf="isSuccess" class="alert alert-success" role="alert">
+            {{successMessage}}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
